@@ -2,6 +2,7 @@
 from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 import requests
+import os 
 import uvicorn
 app = FastAPI()
 
@@ -68,5 +69,7 @@ async def names_abilities(pokemon: str, response: Response):
             return {"message":"servidor no disponible en este momento"}
     except Exception as e:
         print(e)
+
 if __name__=="__main__":
-    uvicorn.run("main:app",host='0.0.0.0', reload=True)
+    port = os.getenv("PORT") or 8000
+    uvicorn.run("main:app",host='0.0.0.0',port=port ,reload=True)
