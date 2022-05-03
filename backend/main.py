@@ -71,5 +71,5 @@ async def names_abilities(pokemon: str, response: Response):
         print(e)
 
 if __name__=="__main__":
-    port = os.getenv("PORT") or 8000
+    port = int(os.getenv("PORT") or 8000)
     uvicorn.run("main:app",host='0.0.0.0',port=port ,reload=True)
